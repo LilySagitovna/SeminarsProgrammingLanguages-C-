@@ -17,24 +17,24 @@
 10 6 24 49 */
 
 Console.WriteLine("Количество строк первого массива: ");
-int rows1 = int.Parse(Console.ReadLine()!);
+int rowsFerst = int.Parse(Console.ReadLine()!);
 Console.WriteLine("Количество столбцов первого массива: ");
-int columns1 = int.Parse(Console.ReadLine()!);
+int columnsFerst = int.Parse(Console.ReadLine()!);
 Console.WriteLine("Количество строк второго массива: ");
-int rows2 = int.Parse(Console.ReadLine()!);
+int rowsSecond = int.Parse(Console.ReadLine()!);
 Console.WriteLine("Количество столбцов второго массива: ");
-int columns2 = int.Parse(Console.ReadLine()!);
+int columnsSecond = int.Parse(Console.ReadLine()!);
 
-int[,] matrixFerst = GetMatrix(rows1, columns1, 1, 10);
+int[,] matrixFerst = GetMatrix(rowsFerst, columnsFerst, 1, 10);
 Console.WriteLine("Первый массив:");
 PrintMatrix(matrixFerst);
 System.Console.WriteLine();
 Console.WriteLine("Второй массив:");
-int[,] matrixSecond = GetMatrix(rows2, columns2, 1, 10);
+int[,] matrixSecond = GetMatrix(rowsSecond, columnsSecond, 1, 10);
 PrintMatrix(matrixSecond);
 System.Console.WriteLine();
 
-if (columns1 == rows2)
+if (columnsFerst == rowsSecond)
 {
     Console.WriteLine("Произведение первого и второго массива равна следующему массиву:");
     PrintMatrix(SearchProductTwoMatric(matrixFerst, matrixSecond));
@@ -73,19 +73,19 @@ void PrintMatrix(int[,] matr)
     }
 }
 
-int[,] SearchProductTwoMatric(int[,] mtrx1, int[,] mtrx2)
+int[,] SearchProductTwoMatric(int[,] mtrxFerst, int[,] mtrxSecond)
 {
-    //int row = mtrx1.GetLength(0);
-    //int column = mtrx2.GetLength(1);
-    int[,] resultMatrix = new int[mtrx1.GetLength(0), mtrx2.GetLength(1)];
+    //int row = mtrxFerst.GetLength(0);
+    //int column = mtrxSecond.GetLength(1);
+    int[,] resultMatrix = new int[mtrxFerst.GetLength(0), mtrxSecond.GetLength(1)];
 
-        for (int i = 0; i < mtrx1.GetLength(0); i++) // счетчик строк первой матрицы
+        for (int i = 0; i < mtrxFerst.GetLength(0); i++) // счетчик строк первой матрицы
         {
-            for (int j = 0; j < mtrx2.GetLength(1); j++) // счетчик столбцов второй матрицы
+            for (int j = 0; j < mtrxSecond.GetLength(1); j++) // счетчик столбцов второй матрицы
             {
-                for (int k = 0; k < mtrx2.GetLength(0); k++) // счетчик строк второй матрицы добавляет и сохраняет в результ матрицу
+                for (int k = 0; k < mtrxSecond.GetLength(0); k++) // счетчик строк второй матрицы добавляет и сохраняет в результ матрицу
                 {
-                    resultMatrix[i, j] += mtrx1[i, k] * mtrx2[k, j];
+                    resultMatrix[i, j] += mtrxFerst[i, k] * mtrxSecond[k, j];
                 }
             }
         }
